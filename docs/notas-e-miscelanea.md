@@ -17,3 +17,15 @@ A partir daí surgiu a proposta de combinar árvores controladas por carga e *sp
 Ao mesmo tempo, como divisões em um eixo produzem blocos com comportamento previsível, uma perda significativa de elementos em um dos lados poderia ser tratada simplesmente pela reconstrução do bloco original. O uso de blocos também torna a exclusão mais simples e limpa, dependendo da maneira como esses blocos são implementados.
 
 Hoje percebo alguma semelhança entre essa linha de raciocínio e as árvores B. Essa aproximação, porém, nunca foi a intenção original da proposta.
+
+## Notas sobre experimentos
+
+Embora os experimentos realizados durante o desenvolvimento da ideia não estejam disponíveis neste repositório, algumas observações recorrentes sobre a estrutura das DCTs merecem ser registradas:
+
+1. **Sensibilidade à dimensionalidade.** As DCTs sofrem com o aumento da dimensionalidade, assim como diversas outras estruturas de indexação espacial. À medida que o número de dimensões cresce, as regiões tendem a se sobrepor mais durante a busca e os limites usados para poda se tornam menos informativos.
+
+2. **Balanceamento observado nos fluxos.** Em diferentes fluxos de dados, as DCTs permaneceram relativamente bem balanceadas mesmo sem um mecanismo explícito de balanceamento global. Esse comportamento não foi investigado formalmente, embora pareça intuitivamente relacionado aos splits locais realizados quando as folhas atingem determinada carga.
+
+3. **Tempo e espaço em comparação com a KD-tree online.** Na maioria dos testes realizados, as DCTs foram mais rápidas e utilizaram menos espaço que a implementação de KD-tree online empregada como referência.
+
+Essas observações devem ser entendidas apenas como registros informais da experimentação. Como os códigos, protocolos e resultados correspondentes não estão disponíveis, elas não constituem evidência reproduzível nem permitem conclusões gerais sobre o desempenho da estrutura.
